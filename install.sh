@@ -16,13 +16,14 @@ sudo ./epsonscan2-bundle-6.7.61.0.x86_64.deb/install.sh
 
 sudo apt purge ipp-usb -y
 
-echo The Installation is Complete
+echo The Installation of scaner driver, proxykey and naps2 is done
 
+sleep 5
 
 echo "This script will downgrade wpa_supplicant on your system. Do you want to continue? (yes/no)"
 read answer
 
-if [ "$answer" != "yes" ]; then
+if [ "$answer" != "y" ]; then
     echo "Aborted. No changes were made."
     exit 0
 fi
