@@ -18,7 +18,7 @@ unzip files
 sudo dpkg -i ./files/epson-inkjet-printer-escpr2_1.2.3-1_amd64.deb ./files/proxkey_ubantu.deb naps2-7.3.0-linux-x64.deb
 
 # Corrected path to the install script
-sudo ./files/epsonscan2-bundle-6.7.61.0.x86_64.deb/install.sh
+sudo sh ./files/epsonscan2-bundle-6.7.61.0.x86_64.deb/install.sh
 
 sudo apt purge ipp-usb -y
 
