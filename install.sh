@@ -9,7 +9,7 @@ sudo apt -y install lsb lsb-core diodon goldendict goldendict-wordnet openssh-se
 wget https://github.com/cyanfish/naps2/releases/download/v7.3.0/naps2-7.3.0-linux-x64.deb
 
 #download all the files in zip mode to install
-wget https://github.com/anilk351/installation_Script/raw/main/files.zip
+wget https://github.com/anilk351/Storage_Files/raw/main/files.zip
 
 #files unzip 
 unzip files
