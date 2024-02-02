@@ -5,14 +5,8 @@ echo please wait while installtion is complete
 #install software that required for epson printer
 sudo apt -y install lsb lsb-core diodon goldendict goldendict-wordnet openssh-server net-tools dolphin
 
-#download naps2 software
-wget https://github.com/cyanfish/naps2/releases/download/v7.3.0/naps2-7.3.0-linux-x64.deb
-
-#download epson inkjet printer deb file
-wget https://github.com/anilk351/installation_Script/raw/main/epson-inkjet-printer-escpr2_1.2.3-1_amd64.deb
-
-#download proxy-key 
-wget https://github.com/anilk351/installation_Script/raw/main/proxkey_ubantu.deb
+#download all the files in zip mode to install
+wget https://github.com/anilk351/installation_Script/raw/main/files.zip
 
 #install software
 sudo dpkg -i epson-inkjet-printer-escpr2_1.2.3-1_amd64.deb naps2-7.3.0-linux-x64.deb proxkey_ubantu.deb
