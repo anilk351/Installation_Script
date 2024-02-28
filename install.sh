@@ -36,14 +36,14 @@ install_apps()
 echo "Do you want to install required apps and NAPS2? (yes/no)"
 read install_choice
 
-if [ "$install_choice" = "y" ]; then
+if [ "$install_choice" = "yes" ]; then
     install_apps
 fi
 
 echo "This script will downgrade wpa_supplicant on your system. Do you want to continue? (yes/no)"
 read answer
 
-if [ "$answer" != "y" ]; then
+if [ "$answer" != "yes" ]; then
     echo "Aborted. No changes were made in wifi client."
     exit 0
 fi
