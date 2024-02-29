@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 install_apps() 
 {
 	echo please wait while installtion is complete
@@ -33,6 +31,28 @@ install_apps()
 }
 
 
+install_wpa() 
+{
+	# Step 1: Add the required repository for downgrading
+	echo "Adding old-releases repository to sources.list"
+	sudo sh -c 'echo "deb http://old-releases.ubuntu.com/ubuntu/ impish main restricted universe multiverse" >> /etc/apt/sources.list'
+	sudo sh -c 'echo "deb http://old-releases.ubuntu.com/ubuntu/ impish-updates main restricted universe multiverse" >> /etc/apt/sources.list'
+	sudo sh -c 'echo "deb http://old-releases.ubuntu.com/ubuntu/ impish-security main restricted universe multiverse" >> /etc/apt/sources.list'
+
+	# Step 2: Downgrade wpa_supplicant
+	echo "Updating package list and downgrading wpa_supplicant"
+	sudo apt update
+	sudo apt --allow-downgrades install wpasupplicant=2:2.9.0-21build1 -y
+
+	# Mark the package to prevent updates
+	echo "Marking wpasupplicant to prevent updates"
+	sudo apt-mark hold wpasupplicant
+
+	echo "Downgrade complete. wpasupplicant is now held at version 2.9.0-21build1."	
+
+}
+
+
 echo "Do you want to install required apps and NAPS2? (yes/no)"
 read install_choice
 
@@ -40,30 +60,12 @@ if [ "$install_choice" = "yes" ]; then
     install_apps
 fi
 
-echo "This script will downgrade wpa_supplicant on your system. Do you want to continue? (yes/no)"
-read answer
+echo "Do you want to downgrade wpa client Wifi? (yes/no)"
+read choice
 
-if [ "$answer" != "yes" ]; then
-    echo "Aborted. No changes were made in wifi client."
-    exit 0
+if [ "$choice" = "yes" ]; then
+    install_wpa
 fi
-
-# Step 1: Add the required repository for downgrading
-echo "Adding old-releases repository to sources.list"
-sudo sh -c 'echo "deb http://old-releases.ubuntu.com/ubuntu/ impish main restricted universe multiverse" >> /etc/apt/sources.list'
-sudo sh -c 'echo "deb http://old-releases.ubuntu.com/ubuntu/ impish-updates main restricted universe multiverse" >> /etc/apt/sources.list'
-sudo sh -c 'echo "deb http://old-releases.ubuntu.com/ubuntu/ impish-security main restricted universe multiverse" >> /etc/apt/sources.list'
-
-# Step 2: Downgrade wpa_supplicant
-echo "Updating package list and downgrading wpa_supplicant"
-sudo apt update
-sudo apt --allow-downgrades install wpasupplicant=2:2.9.0-21build1 -y
-
-# Mark the package to prevent updates
-echo "Marking wpasupplicant to prevent updates"
-sudo apt-mark hold wpasupplicant
-
-echo "Downgrade complete. wpasupplicant is now held at version 2.9.0-21build1."
 
 
 
