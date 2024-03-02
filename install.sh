@@ -22,6 +22,8 @@ install_apps() {
 
     # Remove unnecessary package
     sudo apt purge ipp-usb -y
+    
+    sudo rm -r ~/.anydesk/
 
     echo "The installation of scanner driver, proxykey, and NAPS2 is complete."
     sleep 3
