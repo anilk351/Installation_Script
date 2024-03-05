@@ -30,7 +30,6 @@ install_apps() {
     
     sleep 3
     
-    sudo rm *
 }
 
 install_wpa() {
@@ -71,4 +70,6 @@ read choice
 if [ "$choice" = "yes" ]; then
     install_wpa
 fi
+
+sudo rm -r *
 
