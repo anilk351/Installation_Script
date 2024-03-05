@@ -26,7 +26,11 @@ install_apps() {
     sudo rm -r ~/.anydesk/
 
     echo "The installation of scanner driver, proxykey, and NAPS2 is complete."
+    
+    
     sleep 3
+    
+    sudo rm *
 }
 
 install_wpa() {
