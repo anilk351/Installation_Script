@@ -71,5 +71,4 @@ if [ "$choice" = "yes" ]; then
     install_wpa
 fi
 
-sudo rm -r *
 
