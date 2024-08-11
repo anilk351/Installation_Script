@@ -110,7 +110,7 @@ install_epson()
     if confirm; 
     then
          # Install required packages
-        sudo apt update && sudo apt -y lsb lsb-core || 
+        sudo apt update && sudo apt install -y lsb lsb-core || 
         {
         log "Error Installing lsb core"
         exit 1
@@ -192,29 +192,32 @@ downgrade_Wifi()
 install_apps() 
 {
     echo "In this Installaion following apps are going to install"
-    echo -e "Golden_Dictionary\nProxykey\nDolphine_File_manager\nClipboard\nNet-tools\nOpenSSh-server"
+    echo -e "Golden_Dictionary\nProxykey\nDolphine File explorer\nClipboard\nNet-tools\nOpenSSh-server"
+    if confirm; 
+    then
+        # Install required packages
+        sudo apt update && sudo apt -y install diodon goldendict goldendict-wordnet openssh-server net-tools dolphin || 
+        {
+                log "Error installing apps please check indivisually"
+                exit 1
+            }
+                log "sucessfully installed apps"
 
-    # Install required packages
-    sudo apt update && sudo apt -y install diodon goldendict goldendict-wordnet openssh-server net-tools dolphin || 
-     {
-            log "Error installing apps please check indivisually"
-            exit 1
-        }
-            log "sucessfully installed apps"
+        
+        # Install Proxykey ubuntu software
+        zip_files
 
-    
-    # Install Proxykey ubuntu software
-    zip_files
+        sudo dpkg -i ./files/proxkey_ubantu.deb ||
+        {
+                log "Error installing proxykey for ubuntu"
+                exit 1
+            }
+                log "sucessfully installed proxykey for ubuntu"
+        
+    else
+        echo "Installation canceled by user"
+    fi 
 
-    sudo dpkg -i ./files/proxkey_ubantu.deb ||
-     {
-            log "Error installing proxykey for ubuntu"
-            exit 1
-        }
-            log "sucessfully installed proxykey for ubuntu"
-
-    echo -e "The installation , proxykey complete.\nGolden_Dictionary\nProxykey\nDolphine_File_manager\nClipboard\nNet-tools\nOpenSSh-server"
-    
 }
 
 execute_task() {
