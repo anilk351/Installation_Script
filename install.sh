@@ -21,7 +21,6 @@ log()
     fi
 }
 
-
 tasks=(
     "Install Naps Scanner"
     "Install Only Epson Driver and Epson Scanner"
