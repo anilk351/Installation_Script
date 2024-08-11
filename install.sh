@@ -4,8 +4,6 @@ curdt=$(date +%d_%m_%Y)
 
 log_file="install_script_"${curdt}".log"
 
-log_file="/var/log/my_script.log"
-
 log() 
 {
     local message="$1"
@@ -154,10 +152,15 @@ install_fijustu()
 
     if confirm; 
     then
-    zip_files
+        zip_files
 
-        #Install fijustu driver
-        echo "The development is on the way"
+        sudo dpkg -i ./files/pfufs-ubuntu_2.8.0_amd64.deb ||
+        {
+            log "Error installing fijustu Driver "
+            exit 1
+        }
+            log "sucessfully installed fijustu Driver"
+
     else
         echo "Installation canceled by user"
     fi
