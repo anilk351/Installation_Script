@@ -30,7 +30,8 @@ tasks=(
     "Downgrade wifi only for Dell 7010(model)"
 )
 
-check_dependency() {
+check_dependency() 
+{
     for cmd in "$@"; do
         if ! command -v "$cmd" &> /dev/null; then
             echo "$cmd could not be found, please install it."
@@ -39,7 +40,8 @@ check_dependency() {
     done
 }
 
-confirm() {
+confirm() 
+{
     read -p "Are you sure you want to proceed? [y/N]: " response
     case "$response" in
         [yY][eE][sS]|[yY]) 
@@ -121,6 +123,8 @@ install_epson()
         sudo dpkg -i ./files/epson-inkjet-printer-escpr2_1.2.3-1_amd64.deb ||
         {
             log "Error installing epson printer Driver file"
+            exit 1
+            
         }
             log "sucessfully installed Epson Driver file"
 
@@ -128,6 +132,8 @@ install_epson()
         sudo sh ./files/epsonscan2-bundle-6.7.61.0.x86_64.deb/install.sh ||
          {
             log "Error installing epson printer scanner file"
+            exit 1
+            
         }
             log "sucessfully installed Epson scanner file"
 
@@ -135,6 +141,7 @@ install_epson()
         sudo apt purge ipp-usb -y || 
         {
             log "Error removing ipp-usb pakage"
+            exit 1
         }
             log "sucessfully removing ipp-usb pakage"
 
@@ -191,6 +198,7 @@ install_apps()
     sudo apt update && sudo apt -y install diodon goldendict goldendict-wordnet openssh-server net-tools dolphin || 
      {
             log "Error installing apps please check indivisually"
+            exit 1
         }
             log "sucessfully installed apps"
 
@@ -201,6 +209,7 @@ install_apps()
     sudo dpkg -i ./files/proxkey_ubantu.deb ||
      {
             log "Error installing proxykey for ubuntu"
+            exit 1
         }
             log "sucessfully installed proxykey for ubuntu"
 
