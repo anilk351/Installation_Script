@@ -239,6 +239,7 @@ PS3="Select option by number: "
 
 select option in "${tasks[@]}" "exit"
 do
+    echo -e "\nYou have selected : $option\n"
     if [[ $REPLY -le ${#tasks[@]} ]]; then
         execute_task $REPLY
     elif [[ $REPLY == $(( ${#tasks[@]} + 1 )) ]]; 
