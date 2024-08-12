@@ -112,7 +112,7 @@ install_epson()
     if confirm; 
     then
          # Install required packages
-        sudo apt update && sudo apt install -y lsb lsb-core || 
+        sudo apt update ; sudo apt install -y lsb lsb-core || 
         {
         log "Error Installing lsb core"
         exit 1
@@ -198,7 +198,7 @@ install_apps()
     if confirm; 
     then
         # Install required packages
-        sudo apt update && sudo apt -y install diodon goldendict goldendict-wordnet openssh-server net-tools dolphin || 
+        sudo apt update ; sudo apt install -y diodon goldendict goldendict-wordnet openssh-server net-tools dolphin || 
         {
                 log "Error installing apps please check indivisually"
                 exit 1
