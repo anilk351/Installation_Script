@@ -212,7 +212,8 @@ install_apps()
                 exit 1
             }
                 log "sucessfully installed proxykey for ubuntu"
-        
+        #resolving anydesk issue
+        sudo sudo rm -r ~/.anydesk/
     else
         echo "Installation canceled by user"
     fi 
