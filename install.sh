@@ -2,6 +2,7 @@
 
 curdt=`date +%d-%m-%Y`
 bold_red="\e[1m\e[31m"
+bold_green="\e[1m\e[32m"
 reset="\e[0m"
 
 log_file="install_script_"${curdt}".log"
@@ -35,7 +36,7 @@ check_dependency()
 {
     for cmd in "$@"; do
         if ! command -v "$cmd" &> /dev/null; then
-            echo "$cmd could not be found, please install it."
+            echo -e "${bold_red}${cmd}${reset} could not be found, please install it."
             exit 1
         fi
     done
@@ -99,7 +100,7 @@ install_naps()
         log "Error installing NAPS2"
         exit 1
         }
-        log "NAPS2 installation completed" true
+        echo -e `log  "${bold_green}NAPS2 installation completed${reset}" true `
     else
         echo "Installation is Cancelled by user"
     fi        
@@ -127,7 +128,7 @@ install_epson()
             exit 1
             
         }
-            log "sucessfully installed Epson Driver file"
+            log "sucessfully installed Epson Driver file$"
 
         # Run installation script for Epson scanner
         sudo sh ./files/epsonscan2-bundle-6.7.61.0.x86_64.deb/install.sh ||
@@ -146,7 +147,7 @@ install_epson()
         }
             log "sucessfully removing ipp-usb pakage"
 
-        log "The Driver installation Epson is complete." true
+        echo -e `log "${bold_green}The Driver installation Epson is complete.${reset}" true`
             
          # proceed with installation
     else
@@ -167,7 +168,7 @@ install_fijustu()
             log "Error installing fijustu Driver "
             exit 1
         }
-            log "sucessfully installed fijustu Driver"
+            echo -e `log "${bold_green}sucessfully installed fijustu Driver${reset}" true`
 
     else
         echo "Installation canceled by user"
@@ -187,7 +188,7 @@ install_apps()
                 log "Error installing apps please check indivisually"
                 exit 1
             }
-                log "sucessfully installed apps"
+                echo -e `log "${bold_green}sucessfully installed apps${reset}" true`
 
         
         # Install Proxykey ubuntu software
@@ -198,9 +199,7 @@ install_apps()
                 log "Error installing proxykey for ubuntu"
                 exit 1
             }
-                log "sucessfully installed proxykey for ubuntu"
-        #resolving anydesk issue
-        sudo sudo rm -r ~/.anydesk/
+                echo -e `log "${bold_green}sucessfully installed proxykey for ubuntu${reset}" true`
     else
         echo "Installation canceled by user"
     fi 
@@ -220,7 +219,7 @@ repair_anydesk()
                 log "Error while removing anydesk folder"
                 exit 1
         }
-                log "sucessfully repaired the anydesk" true
+               echo -e  `log "sucessfully repaired the anydesk" true`
                 
     else
         echo "Installation canceled by user"
@@ -244,7 +243,7 @@ execute_task() {
 check_dependency "curl" "wget" "unzip"
 
 PS3="Select option by number: "
-
+echo -e "${bold_red}This script aplicable for ubuntu 22.04 (dell and hp models)${reset} "
 select option in "${tasks[@]}" "exit"
 do
     echo -e "\nYou have selected : $option\n"
