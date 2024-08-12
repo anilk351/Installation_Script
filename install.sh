@@ -95,7 +95,7 @@ install_naps()
         else
             log "NAPS2 source already exists in sources.list."
         fi
-        sudo apt update && sudo apt install naps2 || 
+        sudo apt update ; sudo apt install -y naps2 || 
         {
         log "Error installing NAPS2"
         exit 1
