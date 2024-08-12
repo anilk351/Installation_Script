@@ -28,7 +28,6 @@ tasks=(
     "Install Only Epson Driver and Epson Scanner"
     "Install Fijustu Scanner Driver"
     "Install other Ubuntu Apps (e.g.-Dictionary)"
-    "Downgrade wifi only for Dell 7010(model)"
     "Repair the Anydesk issue"
 )
 
@@ -176,21 +175,6 @@ install_fijustu()
 
 }
 
-
-downgrade_Wifi()
-{    
-    
-    if confirm; 
-    then
-        #downgrade wifi for dell system DELL 7010
-        echo "The development is on the way"
-    else
-        echo "Installation canceled by user"
-    fi
-
-}
-
-
 install_apps() 
 {
     echo "In this Installaion following apps are going to install"
@@ -250,8 +234,7 @@ execute_task() {
         2) install_epson ;;
         3) install_fijustu ;;
         4) install_apps ;;
-        5) downgrade_Wifi ;;
-        6) repair_anydesk ;;
+        5) repair_anydesk ;;
         *) echo "Invalid entry. Please try again." ;;
     esac
 }
