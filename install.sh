@@ -1,6 +1,8 @@
 #!/bin/bash
 
 curdt=`date +%d-%m-%Y`
+bold_red="\e[1m\e[31m"
+reset="\e[0m"
 
 log_file="install_script_"${curdt}".log"
 
@@ -223,9 +225,11 @@ install_apps()
 
 repair_anydesk() 
 {
-    echo "In this process the anydesk will repir it will not install it"
+	
+    echo -e "${bold_red}In this process anyesk directory will be deleted.\n This process doesn't install the anydesk ${reset}"
     if confirm; 
     then
+    	
         # Install required packages
          sudo sudo rm -r ~/.anydesk/ || 
         {
