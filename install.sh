@@ -232,7 +232,7 @@ repair_anydesk()
                 log "Error while removing anydesk folder"
                 exit 1
         }
-                log "sucessfully repaired the anydesk"true
+                log "sucessfully repaired the anydesk" true
                 
     else
         echo "Installation canceled by user"
@@ -247,7 +247,7 @@ execute_task() {
         3) install_fijustu ;;
         4) install_apps ;;
         5) downgrade_Wifi ;;
-        6) repair_anydek ;;
+        6) repair_anydesk ;;
         *) echo "Invalid entry. Please try again." ;;
     esac
 }
