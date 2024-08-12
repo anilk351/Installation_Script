@@ -27,6 +27,7 @@ tasks=(
     "Install Fijustu Scanner Driver"
     "Install other Ubuntu Apps (e.g.-Dictionary)"
     "Downgrade wifi only for Dell 7010(model)"
+    "Repair the Anydesk issue"
 )
 
 check_dependency() 
@@ -220,6 +221,25 @@ install_apps()
 
 }
 
+repair_anydesk() 
+{
+    echo "In this process the anydesk will repir it will not install it"
+    if confirm; 
+    then
+        # Install required packages
+         sudo sudo rm -r ~/.anydesk/ || 
+        {
+                log "Error while removing anydesk folder"
+                exit 1
+        }
+                log "sucessfully repaired the anydesk"true
+                
+    else
+        echo "Installation canceled by user"
+    fi 
+
+}
+
 execute_task() {
     case $1 in
         1) install_naps ;;
@@ -227,6 +247,7 @@ execute_task() {
         3) install_fijustu ;;
         4) install_apps ;;
         5) downgrade_Wifi ;;
+        6) repair_anydek ;;
         *) echo "Invalid entry. Please try again." ;;
     esac
 }
