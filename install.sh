@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curdt=$(date +%d_%m_%Y)
+curdt=`date +%d-%m-%Y`
 
 log_file="install_script_"${curdt}".log"
 
@@ -62,7 +62,7 @@ zip_files()
         echo "files.zip found but not extracted. Extracting files..."
         unzip -q files.zip
     else
-        echo "Downloading new files.zip..."
+        echo "Downloading offline files.zip..."
         wget -q https://github.com/anilk351/Storage_Files/raw/main/files.zip
 
         echo "Unzipping files.zip..."
