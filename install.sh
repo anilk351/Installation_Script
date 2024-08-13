@@ -29,6 +29,7 @@ tasks=(
     "Install Only Epson Driver and Epson Scanner"
     "Install Fijustu Scanner Driver"
     "Install other Ubuntu Apps (e.g.-Dictionary)"
+    "Install/Update Proxykey for ubuntu"
     "Repair the Anydesk issue"
 )
 
@@ -189,9 +190,19 @@ install_apps()
                 exit 1
             }
                 echo -e `log "${bold_green}sucessfully installed apps${reset}" true`
+   
+    else
+        echo "Installation canceled by user"
+    fi 
 
-        
-        # Install Proxykey ubuntu software
+}
+
+install_proxykey()
+{
+	echo "In this proxykey will install or updated"
+	if confirm; 
+    then
+       	# Install Proxykey ubuntu software
         zip_files
 
         sudo dpkg -i ./files/proxkey_ubantu.deb ||
@@ -205,6 +216,7 @@ install_apps()
     fi 
 
 }
+
 
 repair_anydesk() 
 {
@@ -233,6 +245,7 @@ execute_task() {
         2) install_epson ;;
         3) install_fijustu ;;
         4) install_apps ;;
+        5) install_proxykey ;;
         5) repair_anydesk ;;
         *) echo "Invalid entry. Please try again." ;;
     esac
