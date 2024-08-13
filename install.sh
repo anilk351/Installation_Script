@@ -246,7 +246,7 @@ execute_task() {
         3) install_fijustu ;;
         4) install_apps ;;
         5) install_proxykey ;;
-        5) repair_anydesk ;;
+        6) repair_anydesk ;;
         *) echo "Invalid entry. Please try again." ;;
     esac
 }
