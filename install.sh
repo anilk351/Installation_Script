@@ -226,7 +226,7 @@ repair_anydesk()
     then
     	
         # Install required packages
-         sudo sudo rm -r ~/.anydesk/ || 
+         sudo echo "Hello" || 
         {
                 log "Error while removing anydesk folder"
                 exit 1
